@@ -1,0 +1,71 @@
+name: Building Dynamic GSI..
+
+on: [push]
+
+env:
+  ROM_URL: https://tdrive.elytra8.workers.dev/RevengeOS-4.0-R-OFFICIAL-phoenix-20201202-0537.zip
+  ROM_NAME: Generic
+  FZIPNAME: RevengeOS-4.0-R-OFFICIAL-phoenix-20201202-0537.zip
+  ZIP_NAME: Generic_dynamic
+  TZ: Asia/Kolkata
+  MIR: wet
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+
+    steps:
+       - name: Checkout
+         uses: actions/checkout@master
+       
+       - name: Clean Up
+         run: |
+           docker rmi `docker images -q` &> /dev/null
+           sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d &> /dev/null
+           sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php* &> /dev/null
+           sudo -E apt-get update &> /dev/null
+           sudo -E apt-get -y autoremove --purge &> /dev/null
+           sudo -E apt-get clean &> /dev/null
+           
+       - name: Initializing environment
+         run: |
+            sudo -E apt-get -qq update &> /dev/null
+            sudo -E apt-get -qq install git openjdk-8-jdk wget expect &> /dev/null 
+
+       
+       - name: Clone ErfanGSI Source Code
+         run: git clone --recurse-submodules https://github.com/Area69Lab/ErfanGSIs.git &> /dev/null
+       
+       - name: Setting up ErfanGSI requirements
+         run: |
+              sudo chmod -R 777 ErfanGSIs
+              cd ErfanGSIs
+              sudo bash setup.sh &> /dev/null
+       
+       - name: Dynamic Setup
+         run: |
+              cd ErfanGSIs
+              wget $ROM_URL &> /dev/null
+              mkdir working
+              mkdir output
+              sudo bash dyn.sh $ROM_NAME $FZIPNAME
+              sudo bash make.sh working/system $ROM_NAME AB output && sudo bash make.sh working/system $ROM_NAME Aonly output
+       - name: Print build info
+         run: |
+              cat ErfanGSIs/output/*-AB-*.txt
+       - name   : Zip Aonly and upload 
+         run: |
+              mkdir final
+              sudo chmod -R 777 ErfanGSIs/output
+              zip -r ErfanGSIs/output/$ZIP_NAME-GSI-Aonly.7z ErfanGSIs/output/*-Aonly-*.img
+              curl -sL https://git.io/file-transfer | sh
+              ./transfer $MIR ErfanGSIs/output/$ZIP_NAME-GSI-Aonly.7z          
+       - name: Zip AB and upload 
+         run: |
+              zip -r ErfanGSIs/output/$ZIP_NAME-GSI-AB.7z ErfanGSIs/output/*-AB-*.img
+              ./transfer $MIR ErfanGSIs/output/$ZIP_NAME-GSI-AB.7z      
+       - name: Print build info
+         run: |
+              cat ErfanGSIs/output/*-Aonly-*.txt
+         
+            
+            
