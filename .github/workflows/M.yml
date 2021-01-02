@@ -1,6 +1,10 @@
 name: Building Dynamic GSI..
 
-on: [push]
+on:
+   pull_request:
+   push:
+     branches:
+       - master
 
 env:
   ROM_URL: https://dl.google.com/dl/android/aosp/blueline-rq1a.201205.003.a1-factory-c9390617.zip
