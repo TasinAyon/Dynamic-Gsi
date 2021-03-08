@@ -7,9 +7,9 @@ on:
        - master
 
 env:
-  ROM_URL: https://dl.google.com/dl/android/aosp/sunfish-rq1a.210105.002-factory-0d4aed85.zip
+  ROM_URL: https://mor1.androidfilehost.com/dl/_eC_jHk3r21VuSzCjou11A/1615294989/2188818919693749520/test.zip
   ROM_NAME: Pixel
-  FZIPNAME: sunfish-rq1a.210105.002-factory-0d4aed85.zip
+  FZIPNAME: test.zip
   ZIP_NAME: Pixel_dynamic
   TZ: Asia/Kolkata
   MIR: wet
