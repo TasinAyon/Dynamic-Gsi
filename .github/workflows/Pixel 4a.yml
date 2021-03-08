@@ -7,9 +7,9 @@ on:
        - master
 
 env:
-  ROM_URL: https://mor1.androidfilehost.com/dl/_eC_jHk3r21VuSzCjou11A/1615294989/2188818919693749520/test.zip
+  ROM_URL: https://ava1.androidfilehost.com/dl/RJuKUUuXgj8g4J--0OhkFA/1615303016/2188818919693749558/super.zip
   ROM_NAME: Pixel
-  FZIPNAME: test.zip
+  FZIPNAME: super.zip
   ZIP_NAME: Pixel_dynamic
   TZ: Asia/Kolkata
   MIR: wet
