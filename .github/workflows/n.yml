@@ -9,7 +9,7 @@ on:
        - master
     
 env:              
-  ROM_URL: 'https://dl.google.com/developers/android/sc/images/factory/redfin-spb1.210331.013-factory-f3f9db4a.zip'
+  ROM_URL: 'https://lavender.automation9914.workers.dev/pisselsystem.7z'
   ZIP_NAME: 'Pixel.zip'
   OS_TYPE: 'Pixel'
   BUILD_TYPE: 'ab'
