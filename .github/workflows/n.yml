@@ -10,7 +10,7 @@ on:
     
 env:              
   ROM_URL: 'https://dl.google.com/developers/android/sc/images/factory/redfin-spp3.210325.010-factory-3b4bc719.zip'
-  ZIP_NAME: 'pixel5.zip'
+  ZIP_NAME: 'update.zip'
   OS_TYPE: 'Pixel'
   BUILD_TYPE: 'ab'
   REPACK_NAME: 'pixel5.zip'
