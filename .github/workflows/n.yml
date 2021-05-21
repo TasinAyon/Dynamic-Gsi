@@ -9,7 +9,7 @@ on:
        - master
     
 env:              
-  ROM_URL: 'https://dl.google.com/developers/android/sc/images/factory/redfin-spp3.210325.010-factory-3b4bc719.zip'
+  ROM_URL: 'https://dl.google.com/developers/android/sc/images/factory/redfin-spb1.210331.013-factory-f3f9db4a.zip'
   ZIP_NAME: 'Pixel.zip'
   OS_TYPE: 'Pixel'
   BUILD_TYPE: 'ab'
