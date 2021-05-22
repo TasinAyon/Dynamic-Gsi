@@ -15,8 +15,8 @@ env:
   BUILD_TYPE: 'ab'
   REPACK_NAME: 'Pixel3.zip'
   VERSION: '12'
-  upload_WeTransfer: 'true'
-  upload_action-gh-release: 'false'
+  upload_WeTransfer: 'false'
+  upload_action-gh-release: 'true'
   SETUP: 'true'
   
 jobs:
