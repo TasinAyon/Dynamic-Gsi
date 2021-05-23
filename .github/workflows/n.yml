@@ -9,7 +9,7 @@ on:
        - master
     
 env:              
-  ROM_URL: 'https://lavender.automation9914.workers.dev/pixel3.zip'
+  ROM_URL: 'https://lavender.automation9914.workers.dev/image-blueline-spp1.210122.022.zip'
   ZIP_NAME: 'pixel.zip'
   OS_TYPE: 'Pixel'
   BUILD_TYPE: 'ab'
