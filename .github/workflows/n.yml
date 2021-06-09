@@ -9,11 +9,11 @@ on:
        - master
     
 env:              
-  ROM_URL: 'https://dl.google.com/developers/android/sc/images/gsi/aosp_arm64-exp-SPB1.210331.013-7333779-3227774b.zip'
-  ZIP_NAME: 'generic.zip'
-  OS_TYPE: 'Generic'
+  ROM_URL: 'https://dl.google.com/developers/android/sc/images/factory/redfin-spb2.210513.007-factory-2b21382e.zip'
+  ZIP_NAME: 'pixel.zip'
+  OS_TYPE: 'Pixel'
   BUILD_TYPE: 'ab'
-  REPACK_NAME: 'generic.zip'
+  REPACK_NAME: 'Pixel5.zip'
   VERSION: '12'
   upload_WeTransfer: 'false'
   upload_action-gh-release: 'true'
