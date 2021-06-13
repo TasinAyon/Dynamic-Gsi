@@ -9,7 +9,7 @@ on:
        - master
     
 env:              
-  ROM_URL: 'https://lavender.automation9914.workers.dev/cuttlefishS.zip'
+  ROM_URL: 'https://transfer.sh/1JNYzHO/Raw.7z'
   ZIP_NAME: 'generic.zip'
   OS_TYPE: 'Generic'
   BUILD_TYPE: 'ab'
