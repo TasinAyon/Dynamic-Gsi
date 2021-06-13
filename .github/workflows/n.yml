@@ -9,7 +9,7 @@ on:
        - master
     
 env:              
-  ROM_URL: 'https://ci.android.com/builds/submitted/7452592/aosp_cf_arm64_phone-userdebug/latest/aosp_cf_arm64_phone-img-7452592.zip'
+  ROM_URL: 'https://lavender.automation9914.workers.dev/cuttlefishS.zip'
   ZIP_NAME: 'generic.zip'
   OS_TYPE: 'Generic'
   BUILD_TYPE: 'ab'
