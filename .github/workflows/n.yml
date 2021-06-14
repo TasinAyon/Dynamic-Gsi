@@ -9,11 +9,11 @@ on:
        - master
     
 env:              
-  ROM_URL: 'https://transfer.sh/1JNYzHO/Raw.7z'
+  ROM_URL: 'https://dl.google.com/developers/android/sc/images/gsi/aosp_arm64-exp-SPB2.210513.007-7398525-544ab725.zip'
   ZIP_NAME: 'generic.zip'
   OS_TYPE: 'Generic'
   BUILD_TYPE: 'ab'
-  REPACK_NAME: 'genericcfs.zip'
+  REPACK_NAME: 'genericsbeta2.zip'
   VERSION: '12'
   upload_WeTransfer: 'false'
   upload_action-gh-release: 'true'
