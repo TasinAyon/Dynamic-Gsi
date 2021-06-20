@@ -14,7 +14,7 @@ env:
   OS_TYPE: 'Pixel'
   BUILD_TYPE: 'ab'
   REPACK_NAME: 'pixel5june11.zip'
-  VERSION: '12'
+  VERSION: '11'
   upload_WeTransfer: 'false'
   upload_action-gh-release: 'true'
   SETUP: 'true'
