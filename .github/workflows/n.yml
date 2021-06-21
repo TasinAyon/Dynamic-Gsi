@@ -9,12 +9,12 @@ on:
        - master
     
 env:              
-  ROM_URL: 'https://dl.google.com/dl/android/aosp/redfin-rq3a.210605.005-factory-ab2bb3bb.zip'
-  ZIP_NAME: 'pixel.zip'
-  OS_TYPE: 'Pixel'
+  ROM_URL: 'https://lavender.automation9914.workers.dev/aosp_arm64-img-7477004.zip'
+  ZIP_NAME: 'aosp.zip'
+  OS_TYPE: 'Generic'
   BUILD_TYPE: 'ab'
-  REPACK_NAME: 'pixel5june11.zip'
-  VERSION: '11'
+  REPACK_NAME: 'aospmasterjune.zip'
+  VERSION: '12'
   upload_WeTransfer: 'false'
   upload_action-gh-release: 'true'
   SETUP: 'true'
