@@ -3,8 +3,10 @@
 name: SGSI_Build
 
 on:
-  watch:
-    types: [started]
+   pull_request:
+   push:
+     branches:
+       - master
     
 env:              
   ROM_URL: 'https://dl.google.com/developers/android/sc/images/gsi/aosp_arm64-exp-SPB2.210513.007-7398525-544ab725.zip'
