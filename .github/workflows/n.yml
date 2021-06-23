@@ -9,12 +9,12 @@ on:
        - master
     
 env:              
-  ROM_URL: 'https://dl.google.com/developers/android/sc/images/gsi/aosp_arm64-exp-SPB2.210513.007-7398525-544ab725.zip'
+  ROM_URL: 'https://lavender.automation9914.workers.dev/protonaosp.zip'
   ZIP_NAME: 'update.zip'
   OS_TYPE: 'Generic'
   BUILD_TYPE: 'ab'
-  REPACK_NAME: 'aospS.zip'
-  VERSION: '12'
+  REPACK_NAME: 'protonaospjune.zip'
+  VERSION: '11'
   upload_action-gh-release: 'true'
   SETUP: 'true'
   
@@ -42,7 +42,7 @@ jobs:
 
        - name: Cloning...
          run: |
-             git clone --recurse-submodules https://github.com/xiaoxindada/SGSI-build-tool.git -b 12 $GITHUB_WORKSPACE/SGSI-build-tool
+             git clone --recurse-submodules https://github.com/xiaoxindada/SGSI-build-tool.git -b 11 $GITHUB_WORKSPACE/SGSI-build-tool
            
        - name: Download zip...
          run: |
@@ -62,7 +62,7 @@ jobs:
        - name: Building AB DEVICES SGSI...
          if: env.BUILD_TYPE == 'AB' || env.BUILD_TYPE == 'ab'
          run: |
-            sudo bash $GITHUB_WORKSPACE/SGSI-build-tool/make.sh --AB $OS_TYPE $ZIP_NAME --fix-bug
+            sudo bash $GITHUB_WORKSPACE/SGSI-build-tool/make.sh AB
 
        - name: Building A-only DEVICES SGSI...
          if: env.BUILD_TYPE == 'a-only'
