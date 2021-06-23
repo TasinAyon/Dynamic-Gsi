@@ -9,7 +9,7 @@ on:
        - master
     
 env:              
-  ROM_URL: 'https://github.com/ProtonAOSP/android_device_google_redbull/releases/download/v11.5.1/proton-aosp_redfin-factory_11.5.1.zip'
+  ROM_URL: 'https://lavender.automation9914.workers.dev/protonaosp.zip'
   ZIP_NAME: 'proton.zip'
   OS_TYPE: 'Generic'
   BUILD_TYPE: 'ab'
