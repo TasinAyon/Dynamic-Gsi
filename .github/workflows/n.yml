@@ -9,12 +9,12 @@ on:
        - master
     
 env:              
-  ROM_URL: 'https://lavender.automation9914.workers.dev/aosp_arm64-img-7480513.zip'
-  ZIP_NAME: 'aosp.zip'
+  ROM_URL: 'https://github.com/ProtonAOSP/android_device_google_redbull/releases/download/v11.5.1/proton-aosp_redfin-factory_11.5.1.zip'
+  ZIP_NAME: 'proton.zip'
   OS_TYPE: 'Generic'
   BUILD_TYPE: 'ab'
-  REPACK_NAME: 'aospmastertjune.zip'
-  VERSION: '12'
+  REPACK_NAME: 'protonaospjune.zip'
+  VERSION: '11'
   upload_WeTransfer: 'false'
   upload_action-gh-release: 'true'
   SETUP: 'true'
