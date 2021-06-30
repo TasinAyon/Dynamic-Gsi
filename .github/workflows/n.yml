@@ -1,4 +1,4 @@
-# This is a basic workflow tto help you get started with Actions
+# This is a basic workflow to help you get started with Actions
 
 name: SGSI_Build
 
@@ -9,12 +9,12 @@ on:
        - master
     
 env:              
-  ROM_URL: 'https://lavender.automation9914.workers.dev/pixel5.zip'
+  ROM_URL: 'https://bigota.d.miui.com/V12.0.11.0.RFQMIXM/miui_LAURELSPROUTGlobal_V12.0.11.0.RFQMIXM_d32f0c4dd8_11.0.zip'
   ZIP_NAME: 'update.zip'
-  OS_TYPE: 'Pixel'
+  OS_TYPE: 'Generic'
   BUILD_TYPE: 'ab'
-  REPACK_NAME: 'pixel5sbeta2_1.zip'
-  VERSION: '12'
+  REPACK_NAME: 'MiA3.zip'
+  VERSION: '11'
   upload_action-gh-release: 'true'
   SETUP: 'true'
   
@@ -42,7 +42,7 @@ jobs:
 
        - name: Cloning...
          run: |
-             git clone --recurse-submodules https://github.com/xiaoxindada/SGSI-build-tool.git -b 12 $GITHUB_WORKSPACE/SGSI-build-tool
+             git clone --recurse-submodules https://github.com/xiaoxindada/SGSI-build-tool.git -b 11 $GITHUB_WORKSPACE/SGSI-build-tool
            
        - name: Download zip...
          run: |
@@ -62,7 +62,8 @@ jobs:
        - name: Building AB DEVICES SGSI...
          if: env.BUILD_TYPE == 'AB' || env.BUILD_TYPE == 'ab'
          run: |
-            sudo bash $GITHUB_WORKSPACE/SGSI-build-tool/make.sh --AB $OS_TYPE $ZIP_NAME --fix-bug
+            sudo bash $GITHUB_WORKSPACE/SGSI-build-tool/make.sh AB
+            sudo bash $GITHUB_WORKSPACE/SGSI-build-tool/makeimg.sh "AB"
 
        - name: Building A-only DEVICES SGSI...
          if: env.BUILD_TYPE == 'a-only'
