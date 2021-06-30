@@ -9,11 +9,11 @@ on:
        - master
     
 env:              
-  ROM_URL: 'https://bigota.d.miui.com/V12.0.11.0.RFQMIXM/miui_LAURELSPROUTGlobal_V12.0.11.0.RFQMIXM_d32f0c4dd8_11.0.zip'
+  ROM_URL: 'https://bigota.d.miui.com/V12.5.1.0.RJSMIXM/miui_GAUGUINGlobal_V12.5.1.0.RJSMIXM_f9d13f8d28_11.0.zip'
   ZIP_NAME: 'update.zip'
   OS_TYPE: 'Generic'
   BUILD_TYPE: 'ab'
-  REPACK_NAME: 'MiA3.zip'
+  REPACK_NAME: 'Mi10TLite.zip'
   VERSION: '11'
   upload_action-gh-release: 'true'
   SETUP: 'true'
