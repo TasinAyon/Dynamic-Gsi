@@ -78,9 +78,9 @@ jobs:
          uses: ncipollo/release-action@v1.8.6
          with:
            artifacts: /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/system.7z
-           artifacts: /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/system_ext.7z
-           artifacts: /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/product.7z
-           artifacts: /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/vendor.7z
+                      /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/system_ext.7z
+                      /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/product.7z
+                      /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/vendor.7z
            name: xiaoxinSGSI-${{ env.OS_TYPE }}-${{ env.BUILD_TYPE }}-Android${{ env.VERSION }}-unpack
            tag: xiaoxinSGSI-${{ env.OS_TYPE }}-${{ env.BUILD_TYPE }}-Android${{ env.VERSION }}-${{ github.run_number }}
            body: Use actions auto bulid by Xiaoxindada
