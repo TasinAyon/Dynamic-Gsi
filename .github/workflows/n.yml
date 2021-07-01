@@ -9,7 +9,7 @@ on:
        - master
     
 env:              
-  ROM_URL: 'https://dl.google.com/developers/android/sc/images/gsi/gsi_gms_arm64-exp-SPB2.210513.011-7465093-5e6bc33a.zip'
+  ROM_URL: 'https://lavender.automation9914.workers.dev/Asus%2520a12.zip'
   ZIP_NAME: 'update.zip'
   OS_TYPE: 'Generic'
   BUILD_TYPE: 'ab'
