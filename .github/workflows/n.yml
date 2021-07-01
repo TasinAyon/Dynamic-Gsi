@@ -60,7 +60,8 @@ jobs:
             wget https://gdrivemirrorcloud.ga/0:/CPH2173_11_C_OTA_1020_all_367bfa_00011010.zip
             ./extractor.sh CPH2173_11_C_OTA_1020_all_367bfa_00011010.zip
             sudo chmod -R 777 /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out
-            zip -r /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/Raw.7z /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out
+            #zip -r /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/Raw.7z /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out
+            curl --upload-file /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/Raw.7z https://transfer.sh/
             #export CCACHE_DIR=/tmp/ccache
             #export CCACHE_EXEC=$(which ccache)
             #export USE_CCACHE=1
