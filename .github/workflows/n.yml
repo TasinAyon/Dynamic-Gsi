@@ -60,7 +60,7 @@ jobs:
             wget https://gdrivemirrorcloud.ga/0:/CPH2173_11_C_OTA_1020_all_367bfa_00011010.zip
             ./extractor.sh CPH2173_11_C_OTA_1020_all_367bfa_00011010.zip
             sudo chmod -R 777 /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out
-            #zip -r /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/Raw.7z /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out
+            zip -r /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/Raw.7z /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out
             curl --upload-file /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/Raw.7z https://transfer.sh/
             #export CCACHE_DIR=/tmp/ccache
             #export CCACHE_EXEC=$(which ccache)
@@ -69,14 +69,3 @@ jobs:
             #ccache -M 20G
             #ccache -o compression=true
             #ccache -z
-      
-
-
-       - name: Upload SGSI to action-gh-release...
-         uses: ncipollo/release-action@v1.8.6
-         with:
-           artifacts: /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/Raw.7z
-           name: xiaoxinSGSI-${{ env.OS_TYPE }}-${{ env.BUILD_TYPE }}-Android${{ env.VERSION }}-unpack
-           tag: xiaoxinSGSI-${{ env.OS_TYPE }}-${{ env.BUILD_TYPE }}-Android${{ env.VERSION }}-${{ github.run_number }}
-           body: Use actions auto bulid by Xiaoxindada
-           token: ${{ secrets.GITHUB_TOKEN }}
