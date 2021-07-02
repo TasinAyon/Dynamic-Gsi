@@ -1,4 +1,4 @@
-# This is a basic workflow tto help you get started with Actions
+# This is a basic workflow to help you get started with Actions
 
 name: SGSI_Build
 
@@ -9,12 +9,12 @@ on:
        - master
     
 env:              
-  ROM_URL: 'https://bigota.d.miui.com/21.5.14/venus_android_images_2021-05-14-00-13-00.native.gl.user_12.0_f18a6b8690.tgz'
+  ROM_URL: 'https://build.aospa.co/prerelease/mata/pa-ruby-1-mata-20210629-beta.zip'
   ZIP_NAME: 'update.zip'
   OS_TYPE: 'Generic'
   BUILD_TYPE: 'ab'
-  REPACK_NAME: 'Mi11.zip'
-  VERSION: '12'
+  REPACK_NAME: 'parubymata11.zip'
+  VERSION: '11'
   upload_action-gh-release: 'true'
   SETUP: 'true'
   
@@ -42,7 +42,7 @@ jobs:
 
        - name: Cloning...
          run: |
-             git clone --recurse-submodules https://github.com/xiaoxindada/SGSI-build-tool.git -b 12 $GITHUB_WORKSPACE/SGSI-build-tool
+             git clone --recurse-submodules https://github.com/xiaoxindada/SGSI-build-tool.git -b 11 $GITHUB_WORKSPACE/SGSI-build-tool
            
        - name: Download zip...
          run: |
@@ -62,7 +62,8 @@ jobs:
        - name: Building AB DEVICES SGSI...
          if: env.BUILD_TYPE == 'AB' || env.BUILD_TYPE == 'ab'
          run: |
-            sudo bash $GITHUB_WORKSPACE/SGSI-build-tool/make.sh --AB $OS_TYPE $ZIP_NAME --fix-bug
+            sudo bash $GITHUB_WORKSPACE/SGSI-build-tool/make.sh AB
+            sudo bash $GITHUB_WORKSPACE/SGSI-build-tool/makeimg.sh "AB"
 
        - name: Building A-only DEVICES SGSI...
          if: env.BUILD_TYPE == 'a-only'
