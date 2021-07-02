@@ -9,11 +9,11 @@ on:
        - master
     
 env:              
-  ROM_URL: 'https://lavender.automation9914.workers.dev/LE2110_11_C_OTA_1020_all_04e9e0_00011011.zip'
+  ROM_URL: 'https://gdrivemirrorcloud.ga/0:/Ottawa_Beta1_v2.zip'
   ZIP_NAME: 'update.zip'
   OS_TYPE: 'Generic'
   BUILD_TYPE: 'ab'
-  REPACK_NAME: 'OnePlus9A12.zip'
+  REPACK_NAME: 'TCL20Pro5GA12.zip'
   VERSION: '12'
   upload_action-gh-release: 'true'
   SETUP: 'true'
