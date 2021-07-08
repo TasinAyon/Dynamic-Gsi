@@ -1,4 +1,4 @@
-# This is a basic workflow tto help you get started with Actions
+# This is a basic workflow to help you get started with Actions
 
 name: SGSI_Build
 
@@ -9,12 +9,12 @@ on:
        - master
     
 env:              
-  ROM_URL: 'https://lavender.automation9914.workers.dev/protonaosp.zip'
+  ROM_URL: 'https://github.com/TasinAyon/Dynamic-Gsi/releases/download/xiaoxinSGSI-Generic-ab-Android12-76/Raw.7z'
   ZIP_NAME: 'update.zip'
-  OS_TYPE: 'Generic'
+  OS_TYPE: 'Pixel'
   BUILD_TYPE: 'ab'
-  REPACK_NAME: 'protonaospjune.zip'
-  VERSION: '12'
+  REPACK_NAME: 'pixel3july.zip'
+  VERSION: '11'
   upload_action-gh-release: 'true'
   SETUP: 'true'
   
@@ -38,45 +38,57 @@ jobs:
            
        - name: Setting up the SPICES
          run: |
-            sudo chmod 777 /var/cache/debconf/
-            sudo chmod 777 /var/cache/debconf/passwords.dat
-            echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
-            sudo apt-get -y -q update
-            #sudo apt-get -y -q install bc bison build-essential curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32z1-dev liblz4-tool libncurses5-dev libsdl1.2-dev libwxgtk3.0-gtk3-dev libxml2 libxml2-utils lunzip lzop pngcrush schedtool squashfs-tools xsltproc zip zlib1g-dev openjdk-8-jdk python perl git git-lfs libncurses5 xmlstarlet virtualenv xz-utils rr jq
-            #sudo fallocate -l 16G /swapfile
-            #mkdir -p /tmp/rom
-            #cd /tmp/rom
-            sudo -E apt-get -qq install git openjdk-8-jdk wget
-            git config --global user.email tasinayon9@gmail.com
-            git config --global user.name TasinAyon
-            git config --global color.ui false
-            sudo -E apt install unace unrar zip unzip p7zip-full p7zip-rar sharutils rar uudeview mpack arj cabextract rename
-            sudo -E apt install liblzma-dev python3-pip brotli lz4
-            pip3 install --upgrade pip
-            pip3 install twrpdtgen
-            pip3 install backports.lzma protobuf pycrypto twrpdtgen extract-dtb
-            git clone --recurse-submodules https://github.com/AndroidDumps/Firmware_extractor.git
-            cd Firmware_extractor
-            wget https://dl.google.com/dl/android/aosp/blueline-rq3a.210705.001-factory-adc37858.zip
-            ./extractor.sh blueline-rq3a.210705.001-factory-adc37858.zip
-            sudo chmod -R 777 /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out
-            cd out
-            zip -r Raw.7z *.img
-            #zip -r /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/Raw.7z /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out
-            #export CCACHE_DIR=/tmp/ccache
-            #export CCACHE_EXEC=$(which ccache)
-            #export USE_CCACHE=1
-            #export SDCLANG_PATH=vendor/qcom/proprietary/llvm-arm-toolchain-ship/8.0/bin
-            #ccache -M 20G
-            #ccache -o compression=true
-            #ccache -z
-      
+            sudo apt-get install -y git wget git zip unzip curl axel
 
+       - name: Cloning...
+         run: |
+             git clone --recurse-submodules https://github.com/TasinAyon/SGSI-build-tool -b 11 $GITHUB_WORKSPACE/SGSI-build-tool
+           
+       - name: Download zip...
+         run: |
+            cd $GITHUB_WORKSPACE/SGSI-build-tool
+            mkdir ./tmp
+            axel -n $(nproc) -U "Mozilla/5.0" $ROM_URL -o "$GITHUB_WORKSPACE/SGSI-build-tool/tmp/$ZIP_NAME" || wget -U "Mozilla/5.0" $ROM_URL -O "$GITHUB_WORKSPACE/SGSI-build-tool/tmp/$ZIP_NAME"
+            echo "zip_file: $(ls "$GITHUB_WORKSPACE/SGSI-build-tool/tmp/")"
+            
+       - name: Setup Tool Utils...
+         if: env.SETUP == 'true'
+         run: |
+            sudo sed -i 's/USE_MIRROR_FOR_PIP\=true/USE_MIRROR_FOR_PIP\=false/' $GITHUB_WORKSPACE/SGSI-build-tool/setup.sh
+            sudo bash $GITHUB_WORKSPACE/SGSI-build-tool/setup.sh
+            sudo apt-get -y --purge remove "adoptopenjdk-11-hotspot"
+            java -version
+            
+       - name: Building AB DEVICES SGSI...
+         if: env.BUILD_TYPE == 'AB' || env.BUILD_TYPE == 'ab'
+         run: |
+            sudo bash $GITHUB_WORKSPACE/SGSI-build-tool/make.sh AB
+            sudo bash $GITHUB_WORKSPACE/SGSI-build-tool/makeimg.sh "AB"
+
+       - name: Building A-only DEVICES SGSI...
+         if: env.BUILD_TYPE == 'a-only'
+         run: |
+            sudo bash $GITHUB_WORKSPACE/SGSI-build-tool/make.sh --a-only $OS_TYPE $ZIP_NAME --fix-bug     
+
+       - name: Repack output file ...
+         run: |            
+             cd $GITHUB_WORKSPACE/SGSI-build-tool
+             pwd
+             mkdir -p upload
+             zip -r $REPACK_NAME ./SGSI/*
+             if [[ $(du -sb "$REPACK_NAME" | awk '{print $1}') -gt 2097152000 ]];then
+                 echo -e "split packaging..."
+                 tar -cpzf - "$REPACK_NAME" | split -d -b 1024m - "upload/$REPACK_NAME"
+             else
+                 mv $REPACK_NAME upload/$REPACK_NAME
+             fi
+             ls "upload"
 
        - name: Upload SGSI to action-gh-release...
+         if: env.upload_action-gh-release == 'true'
          uses: ncipollo/release-action@v1.8.6
          with:
-           artifacts: /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/Raw.7z
+           artifacts: ${{ github.workspace }}/SGSI-build-tool/upload/*
            name: xiaoxinSGSI-${{ env.OS_TYPE }}-${{ env.BUILD_TYPE }}-Android${{ env.VERSION }}-unpack
            tag: xiaoxinSGSI-${{ env.OS_TYPE }}-${{ env.BUILD_TYPE }}-Android${{ env.VERSION }}-${{ github.run_number }}
            body: Use actions auto bulid by Xiaoxindada
