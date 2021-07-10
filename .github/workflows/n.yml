@@ -9,12 +9,12 @@ on:
        - master
     
 env:              
-  ROM_URL: 'https://github.com/TasinAyon/Dynamic-Gsi/releases/download/xiaoxinSGSI-Generic-ab-Android12-76/Raw.7z'
+  ROM_URL: 'https://lavender.automation9914.workers.dev/OnePlusN100Oxygen_14.O.11_OTA_011_all_2105112059_27364ba113e342ee.zip'
   ZIP_NAME: 'update.zip'
-  OS_TYPE: 'Pixel'
+  OS_TYPE: 'OxygenOS'
   BUILD_TYPE: 'ab'
-  REPACK_NAME: 'pixel3july.zip'
-  VERSION: '11'
+  REPACK_NAME: 'OpNormN100A10.zip'
+  VERSION: '10'
   upload_action-gh-release: 'true'
   SETUP: 'true'
   
@@ -42,7 +42,7 @@ jobs:
 
        - name: Cloning...
          run: |
-             git clone --recurse-submodules https://github.com/TasinAyon/SGSI-build-tool -b 11 $GITHUB_WORKSPACE/SGSI-build-tool
+             git clone --recurse-submodules https://github.com/xiaoxindada/SGSI-build-tool.git -b 11 $GITHUB_WORKSPACE/SGSI-build-tool
            
        - name: Download zip...
          run: |
