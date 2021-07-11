@@ -60,11 +60,11 @@ jobs:
             wget https://mpl1.androidfilehost.com/dl/mxV9pp8cyS_ITbHtr6Wgbg/1626085535/14943124697586337029/OnePlus6Oxygen_22.J.54_OTA_054_all_2105112236_1ff2589108822e6.zip
             ./extractor.sh OnePlus6Oxygen_22.J.54_OTA_054_all_2105112236_1ff2589108822e6.zip
             sudo chmod -R 777 /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out
-            zip -r /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/system.7z /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/system.img
+            #zip -r /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/system.7z /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/system.img
             #zip -r /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/system_ext.7z /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/system_ext.img
             #zip -r /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/odm.7z /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/odm.img
             #zip -r /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/product.7z /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/product.img
-            #zip -r /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/vendor.7z /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/vendor.img
+            zip -r /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/vendor.7z /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/vendor.img
             #export CCACHE_DIR=/tmp/ccache
             #export CCACHE_EXEC=$(which ccache)
             #export USE_CCACHE=1
@@ -78,7 +78,7 @@ jobs:
        - name: Upload SGSI to action-gh-release...
          uses: ncipollo/release-action@v1.8.6
          with:
-           artifacts: /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/system.7z
+           artifacts: /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/vendor.7z
            name: xiaoxinSGSI-${{ env.OS_TYPE }}-${{ env.BUILD_TYPE }}-Android${{ env.VERSION }}-unpack
            tag: xiaoxinSGSI-${{ env.OS_TYPE }}-${{ env.BUILD_TYPE }}-Android${{ env.VERSION }}-${{ github.run_number }}
            body: Use actions auto bulid by Xiaoxindada
