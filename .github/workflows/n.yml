@@ -60,6 +60,7 @@ jobs:
             java -version
             
        - name: Building AB DEVICES SGSI...
+         continue-on-error: true
          if: env.BUILD_TYPE == 'AB' || env.BUILD_TYPE == 'ab'
          run: |
             sudo bash $GITHUB_WORKSPACE/SGSI-build-tool/make.sh --AB $OS_TYPE $ZIP_NAME --fix-bug
