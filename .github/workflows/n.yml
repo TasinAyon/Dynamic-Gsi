@@ -57,6 +57,7 @@ jobs:
             pip3 install backports.lzma protobuf pycrypto twrpdtgen extract-dtb
             #git clone --recurse-submodules https://github.com/AndroidDumps/Firmware_extractor.git
             wget https://lavender.automation9914.workers.dev/TimeShift/vendor.zip
+            wget https://lavender.automation9914.workers.dev/TimeShift/make_ext4fs
             unzip vendor.zip
             mkdir sys
             sudo mount -t ext4 -o loop vendor.img sys/
