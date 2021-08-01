@@ -58,10 +58,11 @@ jobs:
             #git clone --recurse-submodules https://github.com/AndroidDumps/Firmware_extractor.git
             wget https://lavender.automation9914.workers.dev/TimeShift/vendor.zip
             wget https://lavender.automation9914.workers.dev/TimeShift/make_ext4fs
+            make_ext4fs="/home/runner/work/Dynamic-Gsi/Dynamic-Gsi/make_ext4fs"
             unzip vendor.zip
             mkdir sys
             sudo mount -t ext4 -o loop vendor.img sys/
-            sudo ./make_ext4fs -s -T 1626816402 -l 2000M -a vendor vendornew.img sys/
+            sudo $make_ext4fs -s -T 1626816402 -l 2000M -a vendor vendornew.img sys/
             sudo chmod -R 777 /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/sys
             cd sys
             zip -r vendor.7z *.img
@@ -79,7 +80,7 @@ jobs:
        - name: Upload SGSI to action-gh-release...
          uses: ncipollo/release-action@v1.8.6
          with:
-           artifacts: /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/Raw.7z
+           artifacts: /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/vendor.7z
            name: xiaoxinSGSI-${{ env.OS_TYPE }}-${{ env.BUILD_TYPE }}-Android${{ env.VERSION }}-unpack
            tag: xiaoxinSGSI-${{ env.OS_TYPE }}-${{ env.BUILD_TYPE }}-Android${{ env.VERSION }}-${{ github.run_number }}
            body: Use actions auto bulid by Xiaoxindada
