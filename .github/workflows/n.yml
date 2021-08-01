@@ -46,7 +46,7 @@ jobs:
             #sudo fallocate -l 16G /swapfile
             #mkdir -p /tmp/rom
             #cd /tmp/rom
-            sudo -E apt-get -qq install git openjdk-8-jdk wget
+            sudo -E apt-get -qq install git openjdk-8-jdk wget android-tools-fsutils
             git config --global user.email tasinayon9@gmail.com
             git config --global user.name TasinAyon
             git config --global color.ui false
