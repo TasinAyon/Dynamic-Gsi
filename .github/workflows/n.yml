@@ -46,7 +46,7 @@ jobs:
             #sudo fallocate -l 16G /swapfile
             #mkdir -p /tmp/rom
             #cd /tmp/rom
-            sudo -E apt-get -qq install git openjdk-8-jdk wget
+            sudo -E apt-get -qq install git openjdk-8-jdk wget android-sdk-ext4-utils
             git config --global user.email tasinayon9@gmail.com
             git config --global user.name TasinAyon
             git config --global color.ui false
@@ -60,7 +60,7 @@ jobs:
             unzip vendor.zip
             mkdir sys
             sudo mount -t ext4 -o loop vendor.img sys/
-            sudo make_ext4fs -s -T 1626816402 -l 2000M -a vendor vendornew.img sys/
+            sudo ./make_ext4fs -s -T 1626816402 -l 2000M -a vendor vendornew.img sys/
             sudo chmod -R 777 /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/sys
             cd sys
             zip -r vendor.7z *.img
