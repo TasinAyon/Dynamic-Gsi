@@ -55,13 +55,12 @@ jobs:
             pip3 install --upgrade pip
             pip3 install twrpdtgen
             pip3 install backports.lzma protobuf pycrypto twrpdtgen extract-dtb
-            export PATH="/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin"
             #git clone --recurse-submodules https://github.com/AndroidDumps/Firmware_extractor.git
             wget https://lavender.automation9914.workers.dev/TimeShift/vendor.zip
             unzip vendor.zip
             mkdir sys
             sudo mount -t ext4 -o loop vendor.img sys/
-            sudo ./make_ext4fs -s -T 1626816402 -l 2000M -a vendor vendornew.img sys/
+            sudo make_ext4fs -s -T 1626816402 -l 2000M -a vendor vendornew.img sys/
             sudo chmod -R 777 /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/sys
             cd sys
             zip -r vendor.7z *.img
