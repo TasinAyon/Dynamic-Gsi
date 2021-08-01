@@ -46,7 +46,7 @@ jobs:
             #sudo fallocate -l 16G /swapfile
             #mkdir -p /tmp/rom
             #cd /tmp/rom
-            sudo -E apt-get -qq install git openjdk-8-jdk wget android-tools-fsutils
+            sudo -E apt-get -qq install git openjdk-8-jdk wget
             git config --global user.email tasinayon9@gmail.com
             git config --global user.name TasinAyon
             git config --global color.ui false
@@ -55,6 +55,7 @@ jobs:
             pip3 install --upgrade pip
             pip3 install twrpdtgen
             pip3 install backports.lzma protobuf pycrypto twrpdtgen extract-dtb
+            export PATH="/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin"
             #git clone --recurse-submodules https://github.com/AndroidDumps/Firmware_extractor.git
             wget https://lavender.automation9914.workers.dev/TimeShift/vendor.zip
             unzip vendor.zip
