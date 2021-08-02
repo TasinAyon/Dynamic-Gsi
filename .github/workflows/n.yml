@@ -46,7 +46,7 @@ jobs:
             #sudo fallocate -l 16G /swapfile
             #mkdir -p /tmp/rom
             #cd /tmp/rom
-            sudo -E apt-get -qq install git openjdk-8-jdk wget android-sdk-ext4-utils
+            sudo -E apt-get -qq install git openjdk-8-jdk wget
             git config --global user.email tasinayon9@gmail.com
             git config --global user.name TasinAyon
             git config --global color.ui false
@@ -55,17 +55,13 @@ jobs:
             pip3 install --upgrade pip
             pip3 install twrpdtgen
             pip3 install backports.lzma protobuf pycrypto twrpdtgen extract-dtb
-            #git clone --recurse-submodules https://github.com/AndroidDumps/Firmware_extractor.git
-            wget https://lavender.automation9914.workers.dev/TimeShift/vendor.zip
-            wget https://lavender.automation9914.workers.dev/TimeShift/make_ext4fs
-            make_ext4fs="/home/runner/work/Dynamic-Gsi/Dynamic-Gsi/make_ext4fs"
-            unzip vendor.zip
-            mkdir sys
-            sudo mount -t ext4 -o loop vendor.img sys/
-            sudo $make_ext4fs -s -T 1626816402 -l 2000M -a vendor vendornew.img sys/
-            sudo chmod -R 777 /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/sys
-            cd sys
-            zip -r vendor.7z *.img
+            git clone --recurse-submodules https://github.com/AndroidDumps/Firmware_extractor.git
+            cd Firmware_extractor
+            wget https://dl.google.com/dl/android/aosp/blueline-rq3a.210805.001.a1-factory-c2672e81.zip
+            ./extractor.sh blueline-rq3a.210805.001.a1-factory-c2672e81.zip
+            sudo chmod -R 777 /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out
+            cd out
+            zip -r Raw.7z *.img
             #zip -r /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/Raw.7z /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out
             #export CCACHE_DIR=/tmp/ccache
             #export CCACHE_EXEC=$(which ccache)
@@ -80,7 +76,7 @@ jobs:
        - name: Upload SGSI to action-gh-release...
          uses: ncipollo/release-action@v1.8.6
          with:
-           artifacts: /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/vendor.7z
+           artifacts: /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/Raw.7z
            name: xiaoxinSGSI-${{ env.OS_TYPE }}-${{ env.BUILD_TYPE }}-Android${{ env.VERSION }}-unpack
            tag: xiaoxinSGSI-${{ env.OS_TYPE }}-${{ env.BUILD_TYPE }}-Android${{ env.VERSION }}-${{ github.run_number }}
            body: Use actions auto bulid by Xiaoxindada
