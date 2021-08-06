@@ -9,7 +9,7 @@ on:
        - master
     
 env:              
-  ROM_URL: 'https://mirrors.lolinet.com/firmware/moto/ibiza/official/EEGB/XT2137-1_IBIZA_RETEU_11_RRF31.Q1-59-33_subsidy-DEFAULT_regulatory-DEFAULT_CFC.xml.zip'
+  ROM_URL: 'https://mirrors.lolinet.com/firmware/moto/capri/official/RETAPAC/XT2127-2_CAPRI_RETAPAC_TW_11_RRBS31.Q1-3-48-2_subsidy-DEFAULT_regulatory-XT2127-2-APEM_CFC.xml.zip'
   ZIP_NAME: 'update.zip'
   OS_TYPE: 'Generic'
   BUILD_TYPE: 'ab'
