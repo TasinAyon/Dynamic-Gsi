@@ -9,7 +9,7 @@ on:
        - master
     
 env:              
-  ROM_URL: 'https://mirrors.lolinet.com/firmware/motorola/burton/official/RETAIL/BURTON_RETAIL_11_RPBS31.Q1-19-19-14-9_subsidy-DEFAULT_regulatory-DEFAULT_CFC.xml.zip'
+  ROM_URL: 'https://dumps.tadiphone.dev/dumps/motorola/burton/-/archive/msi-user-11-RPBS31.Q1-19-19-14-9-f575d-release-keys/burton-msi-user-11-RPBS31.Q1-19-19-14-9-f575d-release-keys.zip'
   ZIP_NAME: 'update.zip'
   OS_TYPE: 'Generic'
   BUILD_TYPE: 'ab'
