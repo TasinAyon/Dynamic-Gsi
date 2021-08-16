@@ -9,11 +9,11 @@ on:
        - master
     
 env:              
-  ROM_URL: 'https://mirrors.lolinet.com/firmware/motorola/berlin/official/AMXMX/XT2143-1_BERLIN_AMXMX_11_RRG31.Q3-16_subsidy-TELMXLA_regulatory-DEFAULT_CFC.xml.zip'
+  ROM_URL: 'https://mirrors.lolinet.com/firmware/motorola/burton/official/RETAIL/BURTON_RETAIL_11_RPBS31.Q1-19-19-14-9_subsidy-DEFAULT_regulatory-DEFAULT_CFC.xml.zip'
   ZIP_NAME: 'update.zip'
   OS_TYPE: 'Generic'
   BUILD_TYPE: 'ab'
-  REPACK_NAME: 'motorolaberlin.zip'
+  REPACK_NAME: 'motorolaburton.zip'
   VERSION: '11'
   upload_action-gh-release: 'true'
   SETUP: 'true'
