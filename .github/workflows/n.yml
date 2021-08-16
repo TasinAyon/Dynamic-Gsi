@@ -57,8 +57,8 @@ jobs:
             pip3 install backports.lzma protobuf pycrypto twrpdtgen extract-dtb
             git clone --recurse-submodules https://github.com/AndroidDumps/Firmware_extractor.git
             cd Firmware_extractor
-            wget https://dl.google.com/dl/android/aosp/bonito-pq3b.190801.002-factory-61a2836d.zip
-            ./extractor.sh bonito-pq3b.190801.002-factory-61a2836d.zip
+            wget https://android.googleapis.com/packages/ota-api/package/f579b16cfea1dfbf7fa4baf5f4d28f52ad4da956.zip
+            ./extractor.sh f579b16cfea1dfbf7fa4baf5f4d28f52ad4da956.zip
             sudo chmod -R 777 /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out
             cd out
             zip -r Raw.7z *.img
