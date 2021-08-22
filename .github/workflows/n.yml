@@ -9,7 +9,7 @@ on:
        - master
     
 env:              
-  ROM_URL: 'https://lavender.automation9914.workers.dev/protonaosp.zip'
+  ROM_URL: 'https://android.googleapis.com/packages/ota-api/package/f17063c881869391c6d31d4d11732dca3d009ae0.zip'
   ZIP_NAME: 'update.zip'
   OS_TYPE: 'Generic'
   BUILD_TYPE: 'ab'
@@ -57,14 +57,12 @@ jobs:
             pip3 install backports.lzma protobuf pycrypto twrpdtgen extract-dtb
             git clone --recurse-submodules https://github.com/AndroidDumps/Firmware_extractor.git
             cd Firmware_extractor
-            wget https://dl.google.com/developers/android/sc/images/factory/coral-spb4.210715.011-factory-059cc66e.zip
-            ./extractor.sh coral-spb4.210715.011-factory-059cc66e.zip
+            wget https://android.googleapis.com/packages/ota-api/package/f17063c881869391c6d31d4d11732dca3d009ae0.zip
+            ./extractor.sh f17063c881869391c6d31d4d11732dca3d009ae0.zip
             sudo chmod -R 777 /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out
-            zip -r /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/system.7z /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/system.img
-            #zip -r /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/system_ext.7z /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/system_ext.img
-            #zip -r /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/odm.7z /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/odm.img
-            #zip -r /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/product.7z /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/product.img
-            #zip -r /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/vendor.7z /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/vendor.img
+            cd out
+            zip -r Raw.7z *.img
+            #zip -r /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/Raw.7z /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out
             #export CCACHE_DIR=/tmp/ccache
             #export CCACHE_EXEC=$(which ccache)
             #export USE_CCACHE=1
@@ -78,7 +76,7 @@ jobs:
        - name: Upload SGSI to action-gh-release...
          uses: ncipollo/release-action@v1.8.6
          with:
-           artifacts: /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/system.7z
+           artifacts: /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/Raw.7z
            name: xiaoxinSGSI-${{ env.OS_TYPE }}-${{ env.BUILD_TYPE }}-Android${{ env.VERSION }}-unpack
            tag: xiaoxinSGSI-${{ env.OS_TYPE }}-${{ env.BUILD_TYPE }}-Android${{ env.VERSION }}-${{ github.run_number }}
            body: Use actions auto bulid by Xiaoxindada
