@@ -9,7 +9,7 @@ on:
        - master
     
 env:              
-  ROM_URL: 'https://android.googleapis.com/packages/ota-api/package/f17063c881869391c6d31d4d11732dca3d009ae0.zip'
+  ROM_URL: 'https://dl.google.com/dl/android/aosp/sargo-rq3a.210805.001.a1-factory-32a5c41f.zip'
   ZIP_NAME: 'update.zip'
   OS_TYPE: 'Generic'
   BUILD_TYPE: 'ab'
@@ -57,8 +57,8 @@ jobs:
             pip3 install backports.lzma protobuf pycrypto twrpdtgen extract-dtb
             git clone --recurse-submodules https://github.com/AndroidDumps/Firmware_extractor.git
             cd Firmware_extractor
-            wget https://android.googleapis.com/packages/ota-api/package/f17063c881869391c6d31d4d11732dca3d009ae0.zip
-            ./extractor.sh f17063c881869391c6d31d4d11732dca3d009ae0.zip
+            wget https://dl.google.com/dl/android/aosp/sargo-rq3a.210805.001.a1-factory-32a5c41f.zip
+            ./extractor.sh sargo-rq3a.210805.001.a1-factory-32a5c41f.zip
             sudo chmod -R 777 /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out
             cd out
             zip -r Raw.7z *.img
