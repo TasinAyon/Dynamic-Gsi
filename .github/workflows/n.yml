@@ -9,12 +9,12 @@ on:
        - master
     
 env:              
-  ROM_URL: 'https://github.com/TasinAyon/Dynamic-Gsi/releases/download/xiaoxinSGSI-Generic-ab-Android12-140/Raw.7z'
+  ROM_URL: 'https://ava2.androidfilehost.com/dl/KycvInuX5peST_iZuvUL4A/1629790334/4349826312261717833/IME-2.51.617.1_Stock-system-vendor-boot-vbmeta.zip'
   ZIP_NAME: 'update.zip'
-  OS_TYPE: 'Pixel'
+  OS_TYPE: 'Generic'
   BUILD_TYPE: 'ab'
-  REPACK_NAME: 'Pixel3a.zip'
-  VERSION: '11'
+  REPACK_NAME: 'htc.zip'
+  VERSION: '9'
   upload_action-gh-release: 'true'
   SETUP: 'true'
   
