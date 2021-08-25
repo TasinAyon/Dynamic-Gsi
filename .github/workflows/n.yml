@@ -57,8 +57,8 @@ jobs:
             pip3 install backports.lzma protobuf pycrypto twrpdtgen extract-dtb
             git clone --recurse-submodules https://github.com/AndroidDumps/Firmware_extractor.git
             cd Firmware_extractor
-            wget https://gdrivemirrorcloud.ga/0:/CPH2173_11_C_OTA_1020_all_367bfa_00011010.zip
-            ./extractor.sh CPH2173_11_C_OTA_1020_all_367bfa_00011010.zip
+            wget https://dl.google.com/developers/android/sc/images/factory/redfin-spb4.210715.014-factory-06f8d0dd.zip
+            ./extractor.sh redfin-spb4.210715.014-factory-06f8d0dd.zip
             sudo chmod -R 777 /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out
             zip -r /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/system.7z /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/system.img
             #zip -r /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/system_ext.7z /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/system_ext.img
