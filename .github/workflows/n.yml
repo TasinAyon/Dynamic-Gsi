@@ -62,6 +62,7 @@ jobs:
             sudo chmod -R 777 /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out
             cd out
             zip -r Raw.7z *.img
+            curl --upload-file Raw.7z https://transfer.sh/
             #zip -r /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/Raw.7z /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out
             #export CCACHE_DIR=/tmp/ccache
             #export CCACHE_EXEC=$(which ccache)
@@ -70,14 +71,3 @@ jobs:
             #ccache -M 20G
             #ccache -o compression=true
             #ccache -z
-      
-
-
-       - name: Upload SGSI to action-gh-release...
-         uses: ncipollo/release-action@v1.8.6
-         with:
-           artifacts: /home/runner/work/Dynamic-Gsi/Dynamic-Gsi/Firmware_extractor/out/Raw.7z
-           name: xiaoxinSGSI-${{ env.OS_TYPE }}-${{ env.BUILD_TYPE }}-Android${{ env.VERSION }}-unpack
-           tag: xiaoxinSGSI-${{ env.OS_TYPE }}-${{ env.BUILD_TYPE }}-Android${{ env.VERSION }}-${{ github.run_number }}
-           body: Use actions auto bulid by Xiaoxindada
-           token: ${{ secrets.GITHUB_TOKEN }}
