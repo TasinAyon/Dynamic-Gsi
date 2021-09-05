@@ -9,12 +9,12 @@ on:
        - master
     
 env:              
-  ROM_URL: 'https://bigota.d.miui.com/V12.5.1.0.RJGMIXM/miui_SURYAGlobal_V12.5.1.0.RJGMIXM_e3b8205e7f_11.0.zip'
+  ROM_URL: 'https://mva2.androidfilehost.com/dl/Jz11Fkqo5I_S86y4zNXK_g/1630917277/14943124697586374868/xiaomi.eu_multi_POCOX3NFC_V12.5.1.0.RJGMIXM_v12-11.zip'
   ZIP_NAME: 'update.zip'
   OS_TYPE: 'MIUI'
   BUILD_TYPE: 'ab'
   REPACK_NAME: 'pocox3nfc.zip'
-  VERSION: '12'
+  VERSION: '11'
   upload_action-gh-release: 'true'
   SETUP: 'true'
   
@@ -42,7 +42,7 @@ jobs:
 
        - name: Cloning...
          run: |
-             git clone --recurse-submodules https://github.com/xiaoxindada/SGSI-build-tool.git -b 12 $GITHUB_WORKSPACE/SGSI-build-tool
+             git clone --recurse-submodules https://github.com/TasinAyon/SGSI-build-tool -b 11 $GITHUB_WORKSPACE/SGSI-build-tool
            
        - name: Download zip...
          run: |
@@ -62,7 +62,8 @@ jobs:
        - name: Building AB DEVICES SGSI...
          if: env.BUILD_TYPE == 'AB' || env.BUILD_TYPE == 'ab'
          run: |
-            sudo bash $GITHUB_WORKSPACE/SGSI-build-tool/make.sh --AB $OS_TYPE $ZIP_NAME --fix-bug
+            sudo bash $GITHUB_WORKSPACE/SGSI-build-tool/make.sh AB
+            sudo bash $GITHUB_WORKSPACE/SGSI-build-tool/makeimg.sh "AB"
 
        - name: Building A-only DEVICES SGSI...
          if: env.BUILD_TYPE == 'a-only'
