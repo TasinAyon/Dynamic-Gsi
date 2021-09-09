@@ -7,9 +7,9 @@ on:
        - master
     
 env:
-  ROM_URL: https://dl.google.com/dl/android/aosp/barbet-rd2a.210905.002-factory-923343d0.zip
+  ROM_URL: https://dl.google.com/developers/android/sc/images/factory/barbet-spb5.210812.002-factory-ff58d07e.zip
   ROM_NAME: Pixel
-  ZIP_NAME: pixel5a
+  ZIP_NAME: Pixel5a
   TZ: Asia/Kolkata
   MIR: wet
 jobs:
@@ -35,7 +35,7 @@ jobs:
             sudo -E apt-get -qq install git openjdk-8-jdk wget
        
        - name: Clone ErfanGSI Source Code
-         run: git clone --recurse-submodules https://github.com/erfanoabdi/ErfanGSIs.git
+         run: git clone --recurse-submodules https://github.com/TasinAyon/ErfanGSIs
        
        - name: Setting up ErfanGSI requirements
          continue-on-error: true
