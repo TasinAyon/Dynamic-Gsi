@@ -7,9 +7,9 @@ on:
        - master
     
 env:
-  ROM_URL: https://mpl1.androidfilehost.com/dl/CesGknuJOgNCwU-kxRN74g/1638633702/7161016148664850462/lineage-19.0-20211203-UNOFFICIAL-whyred.zip
+  ROM_URL: https://mpl1.androidfilehost.com/dl/nOQHYY3hUFjzlwgRmU__HQ/1638668838/7161016148664850286/aospa-sapphire-1-oneplus8-alpha-20211128-image.zip
   ROM_NAME: Generic
-  ZIP_NAME: Los19
+  ZIP_NAME: Aospaa12
   TZ: Asia/Kolkata
 jobs:
   build:
