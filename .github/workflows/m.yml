@@ -9,7 +9,7 @@ on:
 env:
   ROM_URL: https://dl.google.com/dl/android/aosp/barbet-sq1a.211205.008-factory-458927f7.zip
   ROM_NAME: Pixel
-  ZIP_NAME: Pixel 5a
+  ZIP_NAME: Pixel5a
   TZ: Asia/Kolkata
 jobs:
   build:
