@@ -7,9 +7,9 @@ on:
        - master
     
 env:
-  ROM_URL: https://mpl1.androidfilehost.com/dl/nOQHYY3hUFjzlwgRmU__HQ/1638668838/7161016148664850286/aospa-sapphire-1-oneplus8-alpha-20211128-image.zip
-  ROM_NAME: Generic
-  ZIP_NAME: Aospaa12
+  ROM_URL: https://dl.google.com/dl/android/aosp/barbet-sq1a.211205.008-factory-458927f7.zip
+  ROM_NAME: Pixel
+  ZIP_NAME: Pixel 5a
   TZ: Asia/Kolkata
 jobs:
   build:
